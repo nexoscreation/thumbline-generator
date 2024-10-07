@@ -41,10 +41,8 @@ export default function getThumbnailTemplate({
     <style>
       body {
         background: ${thumbnail_bg};
-        background-image: radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%);
-        background - image: linear - gradient(to right, red, yellow),
-    linear - gradient(to bottom, blue, green);
-background - blend - mode: multiply;
+        background-image: linear - gradient(to right, red, yellow),linear-gradient(to bottom, blue, green);
+        background-blend-mode: multiply;
         height: 100vh;
         display: flex;
         text-align: center;
@@ -60,7 +58,6 @@ background - blend - mode: multiply;
       h1 {
         font-size: 62px;
         line-height: 80px;
-  
         max-width: 80%;
       }
 
