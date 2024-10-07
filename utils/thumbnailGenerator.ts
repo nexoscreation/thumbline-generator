@@ -1,11 +1,14 @@
+// utils/thumbnailGenerator.ts
 import { sanitizeHtml } from './sanitizer';
 import marked from 'marked';
+
 interface GetThumbnailTemplateArgs {
     thumbnail_bg: string;
     images: string[];
     fontSize: number;
     title: string;
 }
+
 const getImage = (image: string) => {
     return `<img
       class="logo"
@@ -13,12 +16,13 @@ const getImage = (image: string) => {
       src="${sanitizeHtml(image)}"
       width="auto"
       height="225"
-  />`;
+    />`;
 };
 
 function getPlusSign(i: number) {
     return i === 0 ? '' : '<div class="plus">+</div>';
 }
+
 export default function getThumbnailTemplate({
     title,
     thumbnail_bg,
@@ -27,15 +31,11 @@ export default function getThumbnailTemplate({
 }: GetThumbnailTemplateArgs) {
     return `<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Thumbnail</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
     <style>
         body {
             background: ${thumbnail_bg};
@@ -48,40 +48,31 @@ export default function getThumbnailTemplate({
             align-items: center;
             justify-content: center;
         }
-
         svg {
             height: 40px;
             margin-top: 80px;
         }
-
         h1 {
             font-size: 62px;
             line-height: 80px;
             max-width: 80%;
         }
-
         .plus {
             color: #BBB;
             font-family: Times New Roman, Verdana;
             font-size: 100px;
         }
-
         .logo-wrapper {
             display: flex;
             align-items: center;
-            align-content: center;
             justify-content: center;
-            justify-items: center;
         }
-
         .logo {
-            margin: 0 75 px;
+            margin: 0 75px;
         }
-
         .spacer {
-            margin: 150 px;
+            margin: 150px;
         }
-
         .heading {
             font-style: normal;
             font-family: 'Inter', sans-serif;
@@ -91,12 +82,11 @@ export default function getThumbnailTemplate({
         }
     </style>
 </head>
-
 <body>
     <div>
         <div class="spacer"></div>
         <div class="logo-wrapper">
-            ${images.length === 0 ? '' : images.map((img, i) => getPlusSign(i) + getImage(img))}
+            ${images.length === 0 ? '' : images.map((img, i) => getPlusSign(i) + getImage(img)).join('')}
         </div>
         <div class="spacer"></div>
         <div class="heading">
@@ -104,6 +94,5 @@ export default function getThumbnailTemplate({
         </div>
     </div>
 </body>
-
 </html>`;
 }
