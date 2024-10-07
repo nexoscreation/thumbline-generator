@@ -41,7 +41,7 @@ export default function getThumbnailTemplate({
     <style>
       body {
         background: ${thumbnail_bg};
-        background-image: linear - gradient(to right, red, yellow),linear-gradient(to bottom, blue, green);
+        background-image: linear-gradient(to right, red, yellow),linear-gradient(to bottom, blue, green);
         background-blend-mode: multiply;
         height: 100vh;
         display: flex;

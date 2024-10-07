@@ -16,7 +16,7 @@ export default function Home(props: HomeProps) {
 				<p className={styles.subtitle}>
 					Create stunning thumbnails (og-images) on the go with our easy-to-use serverless solution.
 				</p>
-				<a className={styles.ctaButton} href="https://github.com/luk3skyw4lker/thumbnail-generator">
+				<a className={styles.ctaButton} href="https://github.com/nexoscreation/thumbline-generator">
 					Check GitHub Docs
 				</a>
 			</section>
@@ -24,7 +24,7 @@ export default function Home(props: HomeProps) {
 			<section className={styles.demoSection}>
 				<h2>How it works:</h2>
 				<img
-					src="/api/thumbnail.png?title=Sample%20Thumbnail&bg=ffcc00"
+					src="/api/thumbnail.png?title=Hello%20Word"
 					alt="Sample Thumbnail"
 					className={styles.thumbnailPreview}
 				/>
@@ -32,13 +32,13 @@ export default function Home(props: HomeProps) {
 					Generate your own thumbnails by passing parameters to the API. For example:
 				</p>
 				<code className={styles.code}>
-					https://yourdomain.com/api/thumbnail.png?title=Your%20Title&bg=hexcolor
+					https://thumbline-generator.vercel.app/api/thumbnail.png?title=Your%20Title&bg=hexcolor
 				</code>
 			</section>
 
 			<footer className={styles.footer}>
 				<p>Built with ❤️ by NexosCreation. View the full source on{' '}
-					<a href="https://github.com/luk3skyw4lker/thumbnail-generator">GitHub</a>.
+					<a href="https://github.com/nexoscreation/thumbline-generator">GitHub</a>.
 				</p>
 			</footer>
 		</div>

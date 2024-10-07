@@ -28,7 +28,7 @@ export async function getPostBySlug(slug: string) {
 	const base_url =
 		process.env.NODE_ENV === 'development'
 			? 'http://localhost:3000'
-			: 'https://thumbnail-generator.vercel.app';
+			: 'https://thumbline-generator.vercel.app';
 
 	const thumb_url = `${base_url}/api/thumbnail.png?title=${meta.data.title}`;
 

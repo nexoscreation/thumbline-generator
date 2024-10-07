@@ -15,7 +15,7 @@ To generate a thumbnail, you need to call the `/api/thumbnail.png` endpoint with
 ### Example URL
 Here's an example URL for generating a thumbnail:
 ```
-https://your-domain.com/api/thumbnail.png?title=Your%20Thumbnail%20Title&bg=%23ff5733&images=https%3A%2F%2Fexample.com%2Flogo1.png,https%3A%2F%2Fexample.com%2Flogo2.png
+https://thumbline-generator.vercel.app/api/thumbnail.png?title=Your%20Thumbnail%20Title&bg=%23ff5733&images=https%3A%2F%2Fexample.com%2Flogo1.png,https%3A%2F%2Fexample.com%2Flogo2.png
 ```
 
 ## Examples
