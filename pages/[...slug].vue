@@ -5,13 +5,7 @@
 </template>
 
 <script setup lang="ts">
-    import { defineEventHandler } from 'h3';
     import { defineComponent, ref, onMounted } from 'vue';
-
-    export default defineEventHandler(async (event) => {
-        const posts = await getAllPosts();
-        return posts.map(post => ({ params: { slug: post.slug } }));
-    });
 
     definePageMeta({
         layout: 'Post'
@@ -22,6 +16,7 @@
             const post = ref({
                 title: '',
                 description: '',
+                content: '',
                 thumb_url: ''
             });
 
