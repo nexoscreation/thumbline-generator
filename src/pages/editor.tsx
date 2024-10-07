@@ -20,7 +20,7 @@ export default function Editor() {
 
   return (
     <div className={styles.container}>
-      <h1>Thumbnail Generator Editor</h1>
+      <h1 className={styles.h1}>Thumbnail Generator Editor</h1>
 
       <div className={styles.form}>
         {/* Input for title */}

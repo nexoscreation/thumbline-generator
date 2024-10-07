@@ -31,7 +31,7 @@ export default function Home(props: HomeProps) {
 				<p>
 					Generate your own thumbnails by passing parameters to the API. For example:
 				</p>
-				<code>
+				<code className={styles.code}>
 					https://yourdomain.com/api/thumbnail.png?title=Your%20Title&bg=hexcolor
 				</code>
 			</section>

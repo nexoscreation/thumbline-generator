@@ -2,33 +2,40 @@
 
 This is a project inspired by the Rocketseat tutorial on Serverless Thumbnail Generation with Next.js. The tutorial demonstrates how to create dynamic, serverless thumbnails, and you can watch it [here](https://www.youtube.com/watch?v=qvetoR6V5ic).
 
-## How it Works
+## Usage
+To generate a thumbnail, you need to call the `/api/thumbnail.png` endpoint with the following query parameters:
 
-The **Thumbline Generator** allows you to generate custom thumbnails by calling the `/thumbnail.png` endpoint with query parameters. These thumbnails can be embedded directly into your web applications via an image URL.
+### Required Parameters
+- **title**: A string that contains the title of the thumbnail.
 
-### Endpoint Example
+### Optional Parameters
+- **bg**: A hex code representing the background color. If not provided, the default is `#000000`.
+- **images**: A comma-separated list of URLs for the images/logos to be included in the thumbnail. Multiple images can be specified.
 
-To generate a thumbnail, simply use this example URL:
-
+### Example URL
+Here's an example URL for generating a thumbnail:
 ```
-https://thumbnail-generator.vercel.app/api/thumbnail
-```
-
-### Query Parameters
-
-- **title** (required): A string representing the title of the thumbnail. This is the text that will be displayed on the image.
-- **bg** (optional): A hexadecimal color code for the background color of the thumbnail. If not specified, the default color is `#121214`.
-- **images** (optional): A link to an SVG image logo (e.g., a tech logo) that will appear on the thumbnail.
-
-### Example
-
-Here’s an example that generates a thumbnail with the title *"Hoisting in Javascript"*, a JavaScript logo, and the default background:
-
-```
-https://thumbnail-generator.vercel.app/api/thumbnail.png?title=Hoisting%20in%20Javascript&images=https%3A%2F%2Fcdn.worldvectorlogo.com%2Flogos%2Flogo-javascript.svg
+https://your-domain.com/api/thumbnail.png?title=Your%20Thumbnail%20Title&bg=%23ff5733&images=https%3A%2F%2Fexample.com%2Flogo1.png,https%3A%2F%2Fexample.com%2Flogo2.png
 ```
 
-This URL will return a thumbnail with the text "Hoisting in Javascript" and a JavaScript logo at the side.
+## Examples
+### Example 1: Basic Thumbnail Generation
+Generate a thumbnail with a title and default background color.
+```bash
+GET /api/thumbnail.png?title=My%20First%20Thumbnail
+```
+
+### Example 2: Custom Background Color
+Generate a thumbnail with a custom background color.
+```bash
+GET /api/thumbnail.png?title=Custom%20Background&bg=%23ff5733
+```
+
+### Example 3: Multiple Images
+Generate a thumbnail that includes multiple images.
+```bash
+GET /api/thumbnail.png?title=Multiple%20Images&bg=%23ff5733&images=https%3A%2F%2Fexample.com%2Flogo1.png,https%3A%2F%2Fexample.com%2Flogo2.png
+```
 
 ## API Reference
 ### Endpoint
