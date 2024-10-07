@@ -14,7 +14,6 @@
     const post = ref({
         title: '',
         description: '',
-        content: '',
         thumb_url: ''
     });
 
