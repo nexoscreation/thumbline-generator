@@ -15,7 +15,7 @@ export default function PostLayout(props: PostLayoutProps) {
 
 				<meta name="description" content={props.description} />
 
-				<meta property="og:site_name" content="Blog do Diego" />
+				<meta property="og:site_name" content="Blog - Nexos Creation" />
 
 				<meta property="og:title" content={props.title} />
 				<meta property="og:description" content={props.description} />

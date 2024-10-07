@@ -2,14 +2,14 @@ import { sanitizeHtml } from './sanitizer';
 import marked from 'marked';
 
 interface GetThumbnailTemplateArgs {
-	thumbnail_bg: string;
-	images: string[];
-	fontSize: number;
-	title: string;
+    thumbnail_bg: string;
+    images: string[];
+    fontSize: number;
+    title: string;
 }
 
 const getImage = (image: string) => {
-	return `<img
+    return `<img
       class="logo"
       alt="Generated Image"
       src="${sanitizeHtml(image)}"
@@ -19,16 +19,16 @@ const getImage = (image: string) => {
 };
 
 function getPlusSign(i: number) {
-	return i === 0 ? '' : '<div class="plus">+</div>';
+    return i === 0 ? '' : '<div class="plus">+</div>';
 }
 
 export default function getThumbnailTemplate({
-	title,
-	thumbnail_bg,
-	images,
-	fontSize
+    title,
+    thumbnail_bg,
+    images,
+    fontSize
 }: GetThumbnailTemplateArgs) {
-	return `<!DOCTYPE html>
+    return `<!DOCTYPE html>
   <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -42,7 +42,9 @@ export default function getThumbnailTemplate({
       body {
         background: ${thumbnail_bg};
         background-image: radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%);
-        background-size: 100px 100px;
+        background - image: linear - gradient(to right, red, yellow),
+    linear - gradient(to bottom, blue, green);
+background - blend - mode: multiply;
         height: 100vh;
         display: flex;
         text-align: center;

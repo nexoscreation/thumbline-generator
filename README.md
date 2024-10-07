@@ -11,7 +11,7 @@ The **Thumbline Generator** allows you to generate custom thumbnails by calling 
 To generate a thumbnail, simply use this example URL:
 
 ```
-https://thumbnail-generator.vercel.app/api/thumbnail.png?title=Hoisting%20in%20Javascript&images=https%3A%2F%2Fcdn.worldvectorlogo.com%2Flogos%2Flogo-javascript.svg
+https://thumbnail-generator.vercel.app/api/thumbnail
 ```
 
 ### Query Parameters
@@ -39,6 +39,7 @@ This URL will return a thumbnail with the text "Hoisting in Javascript" and a Ja
 ## TODO
 
 - [x] Add logo support.
+- [x] Editor Support.
 - [ ] Enhance the UI for text formatting.
 - [ ] Support for multiple images.
 - [ ] Add custom font support.
