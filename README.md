@@ -30,6 +30,21 @@ https://thumbnail-generator.vercel.app/api/thumbnail.png?title=Hoisting%20in%20J
 
 This URL will return a thumbnail with the text "Hoisting in Javascript" and a JavaScript logo at the side.
 
+## API Reference
+### Endpoint
+`GET /api/thumbnail.png`
+
+### Query Parameters
+| Parameter | Type   | Required | Description                                              |
+|-----------|--------|----------|----------------------------------------------------------|
+| title     | string | Yes      | The title for the thumbnail.                             |
+| bg        | string | No       | The background color in hex format (default: `#000000`).|
+| images    | string | No       | Comma-separated list of image URLs.                     |
+
+### Response
+The response will be a PNG image of the generated thumbnail.
+
+
 ## Features
 
 - **Customizable Title:** Add any title to your thumbnails.
