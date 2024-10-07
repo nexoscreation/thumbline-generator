@@ -1,57 +1,46 @@
-// server/api/thumbnail.ts
-import { defineEventHandler, useQuery } from 'h3';
+import { defineEventHandler, getQuery } from 'h3'; // Use `getQuery` instead of `useQuery`
 import { getScreenshot } from '../../utils/chromium'; // Import the getScreenshot function
-import getThumbnailTemplate from '../../utils/thumbnailGenerator';
-
-const isDev = process.env.NODE_ENV !== 'production';
-
-const getArray = (stringOrArray: string[] | string | undefined): string[] => {
-  if (typeof stringOrArray === 'undefined') {
-    return [];
-  } else if (Array.isArray(stringOrArray)) {
-    return stringOrArray;
-  } else {
-    return [stringOrArray];
-  }
-};
+import getThumbnailTemplate from '../../utils/thumbnailGenerator'; // Your HTML template generator
 
 export default defineEventHandler(async (event) => {
-  try {
-    const query = useQuery(event);
-    const thumbnail_bg = String(query.bg || '#000000');
-    const fontSize = Number(query.fontSize || 100);
-    const images = getArray(query.images);
-    const title = String(query.title);
+    const { title, bg, images, fontSize } = getQuery(event); // Use `getQuery` to extract query params
 
+    const thumbnail_bg = bg || '#000000';
+    const size = Number(fontSize) || 100;
+    const imageUrls = Array.isArray(images) ? images : [images];
+
+    // Validate required fields
     if (!title) {
-      return {
-        statusCode: 400,
-        body: { err: 'Missing title' },
-      };
+        return {
+            statusCode: 400,
+            body: { error: 'Missing title' }
+        };
     }
 
     const html = getThumbnailTemplate({
-      title,
-      thumbnail_bg,
-      images,
-      fontSize,
+        title,
+        thumbnail_bg,
+        images: imageUrls,
+        fontSize: size
     });
 
-    const file = await getScreenshot(html, isDev);
+    try {
+        const isDev = process.env.NODE_ENV !== 'production'; // Check if in development mode
+        const screenshot = await getScreenshot(html, isDev); // Generate screenshot
 
-    // Set response headers
-    event.res.setHeader('Content-Type', 'image/png');
-    event.res.setHeader(
-      'Cache-Control',
-      'public, immutable, no-transform, s-maxage=31536000, max-age=31536000'
-    );
-
-    return file; // Return the image file directly
-  } catch (error) {
-    console.error(error);
-    return {
-      statusCode: 500,
-      body: 'Internal error',
-    };
-  }
+        return {
+            statusCode: 200,
+            body: screenshot,
+            headers: {
+                'Content-Type': 'image/png',
+                'Cache-Control': 'public, immutable, no-transform, s-maxage=31536000, max-age=31536000'
+            }
+        };
+    } catch (error) {
+        console.error(error);
+        return {
+            statusCode: 500,
+            body: { error: 'Internal Server Error' }
+        };
+    }
 });
