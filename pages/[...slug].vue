@@ -11,27 +11,16 @@
         layout: 'Post'
     })
 
-    export default defineComponent({
-        setup() {
-            const post = ref({
-                title: '',
-                description: '',
-                content: '',
-                thumb_url: ''
-            });
-
-            // Use Nuxt's asyncData to fetch data
-            const slug = useRoute().params.slug;
-
-            onMounted(async () => {
-                await fetchPost(slug as string);
-            });
-
-            return {
-                post,
-            };
-        }
+    const post = ref({
+        title: '',
+        description: '',
+        content: '',
+        thumb_url: ''
     });
+
+    // Use Nuxt's asyncData to fetch data
+    const slug = useRoute().params.slug;
+
 </script>
 
 <style scoped>
