@@ -1,9 +1,10 @@
-import { createCanvas, loadImage, registerFont } from 'canvas'
+import { createCanvas, loadImage } from 'canvas'
+// registerFont
 import { defineEventHandler, getQuery, sendStream } from 'h3'
 import { join } from 'path'
 
 // Register a font (make sure to have the font file in your project)
-registerFont(join(process.cwd(), 'assets', 'fonts', 'Roboto-Bold.ttf'), { family: 'Roboto' })
+// registerFont(join(process.cwd(), 'assets', 'fonts', 'Roboto-Bold.ttf'), { family: 'Roboto' })
 
 export default defineEventHandler(async (event) => {
     // Get query parameters
