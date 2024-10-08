@@ -1,8 +1,8 @@
-import { createCanvas, loadImage, registerFont } from 'canvas'
+import { createCanvas, loadImage } from 'canvas'
 import { defineEventHandler, getQuery, sendStream } from 'h3'
 
 // Register a font (make sure to have the font file in your project)
-registerFont('fonts/Roboto-Bold.ttf', { family: 'Roboto' });
+// registerFont('~/assets/fonts/Roboto-Bold.ttf', { family: 'Roboto' });
 
 export default defineEventHandler(async (event) => {
     // Get query parameters
@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
     ctx.fillRect(0, 0, width, height)
 
     // Draw title
-    ctx.font = 'bold 60px Roboto'
+    ctx.font = 'bold 60px sans-serif'
     ctx.fillStyle = textColor
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
