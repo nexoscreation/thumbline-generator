@@ -1,25 +1,23 @@
 <template>
-    <div>
-        <header>
-            <nav>
-                <h1>Serverless Thumbnail Generator</h1>
-                <Nuxtlink to="/">Home</Nuxtlink>
-                <Nuxtlink to="/editor">Editor</Nuxtlink>
-                <Nuxtlink to="/docs">Documation</Nuxtlink>
-            </nav>
-        </header>
+    <header>
+        <nav>
+            <h1>Serverless Thumbnail Generator</h1>
+            <Nuxtlink to="/">Home</Nuxtlink>
+            <Nuxtlink to="/editor">Editor</Nuxtlink>
+            <Nuxtlink to="/docs">Documation</Nuxtlink>
+        </nav>
+    </header>
 
-        <main>
-            <slot />
-        </main>
+    <main>
+        <slot />
+    </main>
 
-        <footer>
-            <p>
-                Built with ❤️ by NexosCreation. View the full source on
-                <a href="https://github.com/nexoscreation/thumbline-generator"> GitHub</a>.
-            </p>
-        </footer>
-    </div>
+    <footer>
+        <p>
+            Built with ❤️ by NexosCreation. View the full source on
+            <a href="https://github.com/nexoscreation/thumbline-generator"> GitHub</a>.
+        </p>
+    </footer>
 </template>
 
 <script setup>

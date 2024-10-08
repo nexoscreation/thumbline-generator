@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     routeRules: {
         '/': { prerender: true }
     },
+    css: ['assets/css/main.css'],
     build: {
         transpile: ['marked']
     }

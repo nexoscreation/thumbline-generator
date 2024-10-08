@@ -29,7 +29,7 @@
 
     export default defineComponent({
         setup() {
-            const thumbnailUrl = ref('/api/thumbnail.png?title=Hello%20World'); // Default thumbnail URL
+            const thumbnailUrl = ref('/api/og-image?title=Hello%20World'); // Default thumbnail URL
 
             return {
                 thumbnailUrl
@@ -82,5 +82,6 @@
         padding: 1rem;
         border-radius: 5px;
         margin-top: 1rem;
+        overflow-x: hidden;
     }
 </style>
