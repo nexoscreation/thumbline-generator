@@ -1,6 +1,15 @@
-# Serverless OG Image Generator
+![GitHub Pages](https://img.shields.io/github/deployments/nexoscreation/thumbline-generator/github-pages.svg?style=flat-square&color=cyan)
+![GitHub Release](https://img.shields.io/github/v/release/nexoscreation/thumbline-generator.svg?style=flat-square&color=cyan)
+![GitHub License](https://img.shields.io/github/license/nexoscreation/thumbline-generator.svg?style=flat-square&color=cyan)
+![GitHub code size](https://img.shields.io/github/languages/code-size/nexoscreation/thumbline-generator.svg?style=flat-square&color=cyan)
 
+---
+
+# Serverless OG Image Generator
+https://github.com/nexoscreation/thumbline-generator
 This project is a serverless Open Graph (OG) image generator built with Nuxt 3. The API dynamically generates OG images by accepting parameters such as `title`, `bgColor`, `textColor`, and `logoUrl`.
+
+---
 
 ## Features
 
@@ -9,6 +18,16 @@ This project is a serverless Open Graph (OG) image generator built with Nuxt 3. 
 - Add a logo to the generated image.
 - Supports PNG format output.
 - Serverless, built with Nuxt 3.
+
+---
+
+## Links
+
+[![Web Demo](https://img.shields.io/badge/Web-Demo-blue?style=for-the-badge&logo=google-chrome)](https://nexoscreation.github.io/thumbline-generator)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-green?style=for-the-badge&logo=github)](https://github.com/nexoscreation/thumbline-generator)
+[![YouTube Video](https://img.shields.io/badge/YouTube-Video-red?style=for-the-badge&logo=youtube)](https://youtu.be/rMnDe0iEGRs?si=B2viVesOhHYusbBG)
+
+---
 
 ## API Usage
 
@@ -47,6 +66,8 @@ If the `title` parameter is missing, the API will return the following error:
 }
 ```
 
+---
+
 ## Contributing
 
 We welcome contributions! Feel free to fork this repo, submit issues, or create pull requests.
@@ -56,6 +77,8 @@ We welcome contributions! Feel free to fork this repo, submit issues, or create 
 3. Make your changes and commit them (`git commit -m 'Add new feature'`).
 4. Push the branch (`git push origin feature-branch`).
 5. Open a pull request.
+
+---
 
 ## License
 
