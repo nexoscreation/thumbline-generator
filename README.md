@@ -6,6 +6,9 @@
 ---
 
 # Serverless OG Image Generator
+
+![image]("https://thumbline-generator.vercel.app/api/og-image?title=Serverless%20OG%20Image%20Generator&bgColor=%231e293b&textColor=%23ffffff&logoUrl=https://nexoscreation.com/logo.png")
+
 https://github.com/nexoscreation/thumbline-generator
 This project is a serverless Open Graph (OG) image generator built with Nuxt 3. The API dynamically generates OG images by accepting parameters such as `title`, `bgColor`, `textColor`, and `logoUrl`.
 
