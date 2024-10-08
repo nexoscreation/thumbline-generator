@@ -1,145 +1,185 @@
 <template>
-<div class="custom-container">
-    <div class="custom-grid">
-        <div class="custom-flex-col">
-            <div class="custom-header">
-                <h1 class="custom-title">Open Graph Image Generator</h1>
-            </div>
-            <p class="custom-muted-text">
-                Create beautiful Open Graph images for your website or social media posts.
-            </p>
-            <form class="custom-form">
-                <div class="custom-flex">
-                    <div class="custom-input-group">
-                        <label for="title" class="custom-label">Title</label>
-                        <input v-model="title" type="text" id="title" class="custom-input" placeholder="Enter title" />
-                    </div>
-                    <div class="custom-input-group">
-                        <label for="subtitle" class="custom-label">Subtitle</label>
-                        <input v-model="subtitle" type="text" id="subtitle" class="custom-input" placeholder="Enter subtitle" />
-                    </div>
+    <div class="custom-container">
+        <div class="custom-grid">
+            <div class="custom-flex-col">
+                <div class="custom-header">
+                    <h1 class="custom-title">Open Graph Image Generator</h1>
+                </div>
+                <p class="custom-muted-text">
+                    Create beautiful Open Graph images for your website or social media posts.
+                </p>
+                <form class="custom-form">
+                    <div class="custom-flex">
+                        <div class="custom-input-group">
+                            <label for="title" class="custom-label">Title</label>
+                            <input v-model="title" type="text" id="title" class="custom-input" placeholder="Enter title" />
+                        </div>
+                        <div class="custom-input-group">
+                            <label for="subtitle" class="custom-label">Subtitle</label>
+                            <input v-model="subtitle" type="text" id="subtitle" class="custom-input" placeholder="Enter subtitle" />
+                        </div>
 
-                </div>
-                <div class="custom-flex">
-                    <div class="custom-layout-group">
-                        <label for="layout" class="custom-label">Layout</label>
-                        <select v-model="layout" id="layout" class="custom-layout-button">
-                            <option value="center">Centered</option>
-                            <option value="left">Left Aligned</option>
-                            <option value="gradient">Gradient Background</option>
-                        </select>
-                        </button>
                     </div>
-                    <div class="custom-logo-group">
-                        <label for="logo" class="custom-label">Logo (optional)</label>
-                        <input type="file" id="logo" accept="image/*" @change="handleLogoUpload" class="custom-logo-button" />
+                    <div class="custom-flex">
+                        <div class="custom-layout-group">
+                            <label for="layout" class="custom-label">Layout</label>
+                            <select v-model="layout" id="layout" class="custom-layout-button">
+                                <option value="center">Centered</option>
+                                <option value="left">Left Aligned</option>
+                                <option value="gradient">Gradient Background</option>
+                            </select>
+                            </button>
+                        </div>
+                        <div class="custom-logo-group">
+                            <label for="logo" class="custom-label">Logo (optional)</label>
+                            <input type="file" id="logo" accept="image/*" @change="handleLogoUpload" class="custom-logo-button" />
+                        </div>
                     </div>
-                </div>
-                <div class="custom-flex">
-                    <div class="custom-background-group">
-                        <label for="bgColor" class="custom-label">Background Color</label>
-                        <input v-model="bgColor" type="color" id="bgColor" class="custom-color-button" />
+                    <div class="custom-flex">
+                        <div class="custom-background-group">
+                            <label for="bgColor" class="custom-label">Background Color</label>
+                            <input v-model="bgColor" type="color" id="bgColor" class="custom-color-button" />
+                        </div>
+                        <div class="custom-color-group">
+                            <label for="textColor" class="custom-label">Text Color</label>
+                            <input v-model="textColor" type="color" id="textColor" class="custom-color-button" />
+                        </div>
                     </div>
-                    <div class="custom-color-group">
-                        <label for="textColor" class="custom-label">Text Color</label>
-                        <input v-model="textColor" type="color" id="textColor" class="custom-color-button" />
-                    </div>
-                </div>
-                <button @click="generateImage" class="custom-generate-button" type="submit">
-                    Generate OG Image
-                </button>
-            </form>
+                    <button @click="generateImage" class="custom-generate-button" type="submit">
+                        Generate OG Image
+                    </button>
+                </form>
+            </div>
+            <div ref="canvasContainer" class="custom-preview">
+                <h2 class="custom-preview-title">Preview</h2>
+                <canvas ref="canvas" width="1200" height="630" class="custom-preview-image"></canvas>
+            </div>
+            <button v-if="imageGenerated" @click="downloadImage" class="custom-download-button">
+                Download Image
+            </button>
         </div>
-        <div ref="canvasContainer" class="custom-preview">
-            <h2 class="custom-preview-title">Preview</h2>
-            <canvas ref="canvas" width="1200" height="630" class="custom-preview-image"></canvas>
-        </div>
-        <button v-if="imageGenerated" @click="downloadImage" class="custom-download-button">
-            Download Image
-        </button>
     </div>
-</div>
-</div>
+    </div>
 </template>
 
 <style scoped>
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
+    .custom-container {
         padding: 20px;
     }
 
-    h1 {
-        text-align: center;
-        font-size: 24px;
-        margin-bottom: 20px;
-        font-weight: bold;
-    }
-
-    .form-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    .custom-grid {
+        display: flex;
+        flex-direction: column;
         gap: 20px;
     }
 
-    .form-fields {
+    .custom-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .custom-flex-col {
         display: flex;
         flex-direction: column;
     }
 
-    .form-group {
-        margin-bottom: 15px;
+    .custom-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
-    label {
-        display: block;
-        margin-bottom: 5px;
+    .custom-title {
+        font-size: 24px;
         font-weight: bold;
     }
 
-    .input-field {
-        width: 100%;
+    .custom-muted-text {
+        color: #6b7280;
+    }
+
+    .custom-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .custom-input {
+        flex: 1;
         padding: 10px;
-        border: 1px solid #ccc;
+        border: 1px solid #d1d5db;
         border-radius: 5px;
     }
 
-    .file-upload {
-        padding: 8px;
+    .custom-input-group,
+    .custom-layout-group,
+    .custom-logo-group,
+    .custom-background-group,
+    .custom-color-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
     }
 
-    .btn-primary {
-        padding: 10px 20px;
-        background-color: #4A90E2;
+    .custom-label {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .custom-layout-button,
+    .custom-background-button,
+    .custom-color-button,
+    .custom-logo-button {
+        padding: 10px;
+        border: 1px solid #d1d5db;
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+
+    .custom-generate-button,
+    .custom-download-button {
+        padding: 10px;
+        background-color: #2563eb;
         color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
     }
 
-    .btn-primary:hover {
-        background-color: #357ABD;
+    .custom-preview {
+        display: flex;
+        flex-direction: column;
     }
 
-    .preview-container {
-        border: 1px solid #ccc;
+    .custom-preview-title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .custom-image-container {
+        border: 1px solid #d1d5db;
         border-radius: 5px;
         padding: 10px;
-        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .btn-download {
-        margin-top: 10px;
-        padding: 10px 20px;
-        background-color: #28A745;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
+    .custom-preview-image {
+        max-width: 100%;
+        height: auto;
     }
 
-    .btn-download:hover {
-        background-color: #218838;
+    .custom-icon {
+        width: 20px;
+        height: 20px;
     }
 </style>
 
