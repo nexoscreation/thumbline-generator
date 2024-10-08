@@ -6,10 +6,14 @@
 
     <header>
         <nav class="nav-bar">
-            <h1>Serverless Thumbnail Generator</h1>
-            <NuxtLink to="/">Home</NuxtLink>
-            <NuxtLink to="/editor-v1">Editor</NuxtLink>
-            <NuxtLink to="/og-image-api">Documentation</NuxtLink>
+            <NuxtLink to="/editor-v1">
+                <h1>Serverless Thumbnail Generator</h1>
+            </NuxtLink>
+            <div class="links">
+                <NuxtLink to="/editor-v1">Editor V1</NuxtLink>
+                <NuxtLink to="/editor-v2">Editor V2</NuxtLink>
+                <NuxtLink to="/og-image-api">Documentation</NuxtLink>
+            </div>
         </nav>
     </header>
 
@@ -48,24 +52,28 @@
     }
 
     .nav-bar h1 {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
         font-weight: bold;
         color: var(--primary-foreground);
         margin: 0;
+    }
+
+    .nav-bar .links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        gap: 1rem;
     }
 
     .nav-bar a {
         color: var(--primary-foreground);
         text-decoration: none;
         font-size: 1.2rem;
-        padding: 0.5rem 1rem;
-        background-color: var(--primary);
-        border-radius: var(--radius);
         transition: background-color 0.3s ease;
     }
 
     .nav-bar a:hover {
-        background-color: var(--primary-foreground);
         color: var(--foreground);
     }
 
