@@ -43,7 +43,7 @@
                             <input v-model="textColor" type="color" id="textColor" class="custom-color-button" />
                         </div>
                     </div>
-                    <button @click="generateImage" class="custom-generate-button" type="submit">
+                    <button @click="generateImage" class="custom-generate-button">
                         Generate OG Image
                     </button>
                 </form>
