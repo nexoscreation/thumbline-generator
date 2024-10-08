@@ -1,49 +1,49 @@
-    :root {
-        --background: hsl(0, 0%, 100%);
-        --foreground: hsl(222.2, 84%, 4.9%);
-        --card: hsl(0, 0%, 100%);
-        --card-foreground: hsl(222.2, 84%, 4.9%);
-        --popover: hsl(0, 0%, 100%);
-        --popover-foreground: hsl(222.2, 84%, 4.9%);
-        --primary: hsl(221.2, 83.2%, 53.3%);
-        --primary-foreground: hsl(210, 40%, 98%);
-        --secondary: hsl(210, 40%, 96.1%);
-        --secondary-foreground: hsl(222.2, 47.4%, 11.2%);
-        --muted: hsl(210, 40%, 96.1%);
-        --muted-foreground: hsl(215.4, 16.3%, 44%);
-        --accent: hsl(210, 40%, 96.1%);
-        --accent-foreground: hsl(222.2, 47.4%, 11.2%);
-        --destructive: hsl(0, 72%, 51%);
-        --destructive-foreground: hsl(210, 40%, 98%);
-        --border: hsl(214.3, 31.8%, 91.4%);
-        --input: hsl(214.3, 31.8%, 91.4%);
-        --ring: hsl(221.2, 83.2%, 53.3%);
-        --popover: 0 0% 100%;
-        --popover-foreground: 222.2 84% 4.9%;
-        --chart-1: 221.2 83.2% 53.3%;
-        --chart-2: 216 92% 60%;
-        --chart-3: 212 95% 68%;
-        --chart-4: 210 98% 78%;
-        --chart-5: 212 97% 87%;
-        --radius: 0.5rem;
-    }
+:root {
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(222.2, 84%, 4.9%);
+    --card: hsl(0, 0%, 100%);
+    --card-foreground: hsl(222.2, 84%, 4.9%);
+    --popover: hsl(0, 0%, 100%);
+    --popover-foreground: hsl(222.2, 84%, 4.9%);
+    --primary: hsl(221.2, 83.2%, 53.3%);
+    --primary-foreground: hsl(210, 40%, 98%);
+    --secondary: hsl(210, 40%, 96.1%);
+    --secondary-foreground: hsl(222.2, 47.4%, 11.2%);
+    --muted: hsl(210, 40%, 96.1%);
+    --muted-foreground: hsl(215.4, 16.3%, 44%);
+    --accent: hsl(210, 40%, 96.1%);
+    --accent-foreground: hsl(222.2, 47.4%, 11.2%);
+    --destructive: hsl(0, 72%, 51%);
+    --destructive-foreground: hsl(210, 40%, 98%);
+    --border: hsl(214.3, 31.8%, 91.4%);
+    --input: hsl(214.3, 31.8%, 91.4%);
+    --ring: hsl(221.2, 83.2%, 53.3%);
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --chart-1: 221.2 83.2% 53.3%;
+    --chart-2: 216 92% 60%;
+    --chart-3: 212 95% 68%;
+    --chart-4: 210 98% 78%;
+    --chart-5: 212 97% 87%;
+    --radius: 0.5rem;
+}
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: 'Inter', sans-serif;
-        --font-sans-serif: 'Inter';
-    }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Inter', sans-serif;
+    --font-sans-serif: 'Inter';
+}
 
-    body {
-        font-family: 'Inter', sans-serif;
-        --font-sans-serif: 'Inter';
-        margin: 0;
-        padding: 0;
-        background-color: var(--background);
-        color: var(--foreground);
-        font-size: 16px;
-    }
+body {
+    font-family: 'Inter', sans-serif;
+    --font-sans-serif: 'Inter';
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-size: 16px;
+}
