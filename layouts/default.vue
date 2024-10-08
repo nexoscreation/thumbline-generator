@@ -30,7 +30,7 @@
 <style scoped>
     /* Scoped styles for the layout */
     header {
-        background-color: var(--foreground);
+        background-color: var(--secondary);
         padding: 2rem 1rem;
         text-align: center;
     }
@@ -46,7 +46,7 @@
     .nav-bar h1 {
         font-size: 1.8rem;
         font-weight: bold;
-        color: var(--primary-foreground);
+        color: var(--muted-foreground);
         margin: 0;
     }
 
@@ -59,14 +59,14 @@
     }
 
     .nav-bar a {
-        color: var(--primary-foreground);
+        color: var(--foreground);
         text-decoration: none;
         font-size: 1.2rem;
         transition: background-color 0.3s ease;
     }
 
     .nav-bar a:hover {
-        color: var(--foreground);
+        color: var(--primary);
     }
 
     main {
