@@ -18,7 +18,6 @@
                             <label for="subtitle" class="custom-label">Subtitle</label>
                             <input v-model="subtitle" type="text" id="subtitle" class="custom-input" placeholder="Enter subtitle" />
                         </div>
-
                     </div>
                     <div class="custom-flex">
                         <div class="custom-layout-group">
@@ -28,7 +27,6 @@
                                 <option value="left">Left Aligned</option>
                                 <option value="gradient">Gradient Background</option>
                             </select>
-                            </button>
                         </div>
                         <div class="custom-logo-group">
                             <label for="logo" class="custom-label">Logo (optional)</label>
@@ -58,7 +56,6 @@
                 Download Image
             </button>
         </div>
-    </div>
     </div>
 </template>
 
