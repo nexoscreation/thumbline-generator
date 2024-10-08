@@ -1,7 +1,7 @@
 <template>
     <header>
         <nav class="nav-bar">
-            <NuxtLink to="/editor-v1">
+            <NuxtLink to="/">
                 <h1>Serverless Thumbnail Generator</h1>
             </NuxtLink>
             <div class="links">
@@ -30,7 +30,7 @@
 <style scoped>
     /* Scoped styles for the layout */
     header {
-        background-color: var(--foreground);
+        background-color: var(--secondary);
         padding: 2rem 1rem;
         text-align: center;
     }
