@@ -9,7 +9,7 @@
                 API Documentation
             </NuxtLink>
             <NuxtLink class="cta-button" to="/editor-v2">
-                Editor V2
+                Latest Editor
             </NuxtLink>
         </div>
     </section>
@@ -42,17 +42,14 @@
 
 <style scoped>
     .hero {
-        padding: 2rem;
-        background-color: var(--primary);
         text-align: center;
-        border-radius: var(--radius);
         margin-bottom: 2rem;
     }
 
     .title {
         font-size: 3rem;
         font-weight: bold;
-        color: var(--primary-foreground);
+        color: var(--foreground);
         margin-bottom: 1rem;
     }
 

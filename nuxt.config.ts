@@ -11,7 +11,7 @@ export default defineNuxtConfig({
         transpile: ['marked']
     },
     content: {
-        documentDriven: true,
+        documentDriven: false,
         contentHead: true
     }
 })
