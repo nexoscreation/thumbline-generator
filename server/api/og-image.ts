@@ -22,39 +22,45 @@ export default defineEventHandler(async (event) => {
     ctx.fillStyle = bgColor
     ctx.fillRect(0, 0, width, height)
 
-    // Draw title
+
+    // Set text properties
+
     ctx.font = 'bold 60px Arial'
     ctx.fillStyle = textColor
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
+    
+    // Draw title
+    const titleX = textAlign === 'left' ? 50 : width / 2
+    ctx.fillText(title, titleX, height / 2 - 40)
 
     // Wrap text if it's too long
-    const words = title.split(' ')
-    let line = ''
-    const lines = []
-    const maxWidth = width - 100
-    const lineHeight = 70
+    /*    const words = title.split(' ')
+        let line = ''
+        const lines = []
+        const maxWidth = width - 100
+        const lineHeight = 70
 
-    for (let i = 0; i < words.length; i++) {
-        const testLine = line + words[i] + ' '
-        const metrics = ctx.measureText(testLine)
-        const testWidth = metrics.width
+      for (let i = 0; i < words.length; i++) {
+            const testLine = line + words[i] + ' '
+            const metrics = ctx.measureText(testLine)
+            const testWidth = metrics.width
 
-        if (testWidth > maxWidth && i > 0) {
-            lines.push(line)
-            line = words[i] + ' '
-        } else {
-            line = testLine
+            if (testWidth > maxWidth && i > 0) {
+                lines.push(line)
+                line = words[i] + ' '
+            } else {
+                line = testLine
+            }
         }
-    }
-    lines.push(line)
+        lines.push(line)
 
-    // Draw wrapped text
-    let y = height / 2 - (lines.length - 1) * lineHeight / 2
-    for (let i = 0; i < lines.length; i++) {
-        ctx.fillText(lines[i], width / 2, y)
-        y += lineHeight
-    }
+        // Draw wrapped text
+        let y = height / 2 - (lines.length - 1) * lineHeight / 2
+        for (let i = 0; i < lines.length; i++) {
+            ctx.fillText(lines[i], width / 2, y)
+            y += lineHeight
+        }. */
 
     // Draw logo if provided
     if (logoUrl) {

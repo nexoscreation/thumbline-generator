@@ -54,7 +54,7 @@
     .nav-bar h1 {
         font-size: 1.8rem;
         font-weight: bold;
-        color: var(--muted-foreground);
+        color: var(--accent);
         margin: 0;
     }
 
