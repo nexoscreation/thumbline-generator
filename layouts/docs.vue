@@ -6,7 +6,7 @@
 
     <header>
         <nav class="nav-bar">
-            <NuxtLink to="/">
+            <NuxtLink to="/editor-v1">
                 <h1>Serverless Thumbnail Generator</h1>
             </NuxtLink>
             <div class="links">
@@ -29,7 +29,7 @@
 
     <footer>
         <p>
-            Built with ❤️ by <a href="https://nexoscreation.com" target="_blank" rel="noopener noreferrer">Nexos Creation</a>. View the full source on
+            Built with ❤️ by Nexos Creation. View the full source on
             <a href="https://github.com/nexoscreation/thumbline-generator" target="_blank" rel="noopener noreferrer">GitHub</a>.
         </p>
     </footer>
@@ -38,7 +38,7 @@
 <style scoped>
     /* Scoped styles for the layout */
     header {
-        background-color: var(--secondary);
+        background-color: var(--foreground);
         padding: 2rem 1rem;
         text-align: center;
     }
@@ -81,6 +81,7 @@
         padding: 4rem 2rem;
         margin: 0 auto;
         max-width: 1200px;
+        text-align: center;
         flex: 1;
         font-family: var(--font-sans-serif);
     }
