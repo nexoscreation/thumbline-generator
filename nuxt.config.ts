@@ -9,5 +9,9 @@ export default defineNuxtConfig({
     css: ['assets/css/main.css'],
     build: {
         transpile: ['marked']
+    },
+    content: {
+        documentDriven: true,
+        contentHead: true
     }
 })

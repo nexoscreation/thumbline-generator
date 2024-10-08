@@ -2,18 +2,6 @@
 
     <Head>
         <title>{{ document.title }}</title>
-        <meta name="description" :content="document.description" />
-        <meta property="og:site_name" content="Blog - Nexos Creation" />
-        <meta property="og:title" :content="document.title" />
-        <meta property="og:description" :content="document.description" />
-        <meta property="og:image" :content="document.thumb_url" />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" :content="document.title" />
-        <meta name="twitter:description" :content="document.description" />
-        <meta name="twitter:image" :content="document.thumb_url" />
     </Head>
 
     <header>
@@ -28,7 +16,7 @@
     <main>
         <article>
             <h1>{{ document.title }}</h1>
-            <img width="600" :src="document.thumb_url" :alt="document.title" />
+            <img width="600" :src="document.image" :alt="document.title" />
             <div v-html="document.body">
                 <!-- Render body content from the content file -->
             </div>
@@ -111,12 +99,30 @@
 </style>
 
 <script lang="ts">
-    import { defineComponent, ref, useAsyncData } from 'vue';
-    import { useContent } from '@nuxt/content';
+    import { defineComponent, ref } from 'vue';
 
     export default defineComponent({
-        setup() {
-            const { data: document } = useAsyncData(() => useContent().fetch()); // Fetch content data
+        async setup() {
+            const { document } = await useContentHead(); // Fetch content and metadata
+
+            // Update the head with metadata
+            useHead({
+                title: document.title,
+                meta: [
+                    { name: 'description', content: document.description },
+                    { property: 'og:site_name', content: 'Og Image Generator - Nexos Creation' },
+                    { property: 'og:title', content: document.title },
+                    { property: 'og:description', content: document.description },
+                    { property: 'og:image', content: document.image },
+                    { property: 'og:image:type', content: 'image/png' },
+                    { property: 'og:image:width', content: '1200' },
+                    { property: 'og:image:height', content: '630' },
+                    { name: 'twitter:card', content: 'summary_large_image' },
+                    { name: 'twitter:title', content: document.title },
+                    { name: 'twitter:description', content: document.description },
+                    { name: 'twitter:image', content: document.image },
+            ],
+            });
 
             return {
                 document

@@ -1,6 +1,6 @@
 {
     "name": "serverless-ogimg-gen",
-    "version": "0.4.3",
+    "version": "0.4.6",
     "private": true,
     "scripts": {
         "build": "nuxt build",
