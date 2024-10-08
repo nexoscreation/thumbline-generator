@@ -51,7 +51,7 @@
 
             const handleGenerateThumbnail = () => {
                 const images = imageUrls.value.filter(url => url.trim()).join(',');
-                const generatedUrl = `/api/thumbnail.png?title=${encodeURIComponent(title.value)}&bg=${bgColor.value}&images=${encodeURIComponent(images)}`;
+                const generatedUrl = `/api/og-image?title=${encodeURIComponent(title.value)}&bgColor=${bgColor.value}&logoUrl=${encodeURIComponent(images)}`;
                 thumbnailUrl.value = generatedUrl;
             };
 
