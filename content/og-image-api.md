@@ -1,6 +1,7 @@
 ---
 title: OG Image API Documentation
 description: API to dynamically generate Open Graph images with custom text, background, text color, and logos.
+thumb_url: /api/og-image?title=OG%20Image%20API&bgColor=%231e293b&textColor=%23ffffff&logoUrl=https://nexoscreation.com/logo.png
 ---
 
 # OG Image API

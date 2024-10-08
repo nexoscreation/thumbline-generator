@@ -5,7 +5,7 @@
             Create stunning thumbnails (og-images) on the go with our easy-to-use serverless solution.
         </p>
         <div class="cta-buttons">
-            <NuxtLink class="cta-button" to="https://github.com/nexoscreation/thumbline-generator">
+            <NuxtLink class="cta-button" to="/og-image-api">
                 API Documentation
             </NuxtLink>
             <NuxtLink class="cta-button" to="/editor-v2">
