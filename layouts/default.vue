@@ -7,7 +7,7 @@
             <div class="links">
                 <NuxtLink to="/editor-v1">Editor V1</NuxtLink>
                 <NuxtLink to="/editor-v2">Editor V2</NuxtLink>
-                <NuxtLink to="/og-image-api">Documentation</NuxtLink>
+                <NuxtLink to="/docs/og-image-api">Documentation</NuxtLink>
             </div>
         </nav>
     </header>

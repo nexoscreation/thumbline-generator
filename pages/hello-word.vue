@@ -1,16 +1,9 @@
 <template>
     <div>
-        <h1>{{ post.title }}</h1>
+        <h1>Hello Word</h1>
         <img :src="ogImageUrl" alt="OG Image" />
         <!-- Rest of your blog post content -->
-        <ContentDoc>
-            <template #not-found>
-                <h1>This is Example of Generated og image</h1>
-            </template>
-            <template #empty>
-                <h1>Page is empty</h1>
-            </template>
-        </ContentDoc>
+        <p>Check it and share to check</p>
     </div>
 </template>
 <script lang="ts" setup>
@@ -18,7 +11,7 @@
     import { computed } from 'vue'
 
     const post = {
-        title: 'My Awesome Blog Post',
+        title: 'Hello Word',
         // other post data
     }
 
