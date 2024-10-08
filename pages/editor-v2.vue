@@ -1,51 +1,65 @@
 <template>
-    <div class="container">
-        <h1>OG Image Generator</h1>
-        <div class="form-grid">
-            <div class="form-fields">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input v-model="title" type="text" id="title" class="input-field" placeholder="Enter title" />
+<div class="custom-container">
+    <div class="custom-grid">
+        <div class="custom-flex-col">
+            <div class="custom-header">
+                <h1 class="custom-title">Open Graph Image Generator</h1>
+            </div>
+            <p class="custom-muted-text">
+                Create beautiful Open Graph images for your website or social media posts.
+            </p>
+            <form class="custom-form">
+                <div class="custom-flex">
+                    <div class="custom-input-group">
+                        <label for="title" class="custom-label">Title</label>
+                        <input v-model="title" type="text" id="title" class="custom-input" placeholder="Enter title" />
+                    </div>
+                    <div class="custom-input-group">
+                        <label for="subtitle" class="custom-label">Subtitle</label>
+                        <input v-model="subtitle" type="text" id="subtitle" class="custom-input" placeholder="Enter subtitle" />
+                    </div>
+
                 </div>
-                <div class="form-group">
-                    <label for="subtitle">Subtitle</label>
-                    <input v-model="subtitle" type="text" id="subtitle" class="input-field" placeholder="Enter subtitle" />
+                <div class="custom-flex">
+                    <div class="custom-layout-group">
+                        <label for="layout" class="custom-label">Layout</label>
+                        <select v-model="layout" id="layout" class="custom-layout-button">
+                            <option value="center">Centered</option>
+                            <option value="left">Left Aligned</option>
+                            <option value="gradient">Gradient Background</option>
+                        </select>
+                        </button>
+                    </div>
+                    <div class="custom-logo-group">
+                        <label for="logo" class="custom-label">Logo (optional)</label>
+                        <input type="file" id="logo" accept="image/*" @change="handleLogoUpload" class="custom-logo-button" />
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="bgColor">Background Color</label>
-                    <input v-model="bgColor" type="color" id="bgColor" class="input-field" />
+                <div class="custom-flex">
+                    <div class="custom-background-group">
+                        <label for="bgColor" class="custom-label">Background Color</label>
+                        <input v-model="bgColor" type="color" id="bgColor" class="custom-color-button" />
+                    </div>
+                    <div class="custom-color-group">
+                        <label for="textColor" class="custom-label">Text Color</label>
+                        <input v-model="textColor" type="color" id="textColor" class="custom-color-button" />
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="textColor">Text Color</label>
-                    <input v-model="textColor" type="color" id="textColor" class="input-field" />
-                </div>
-                <div class="form-group">
-                    <label for="layout">Layout</label>
-                    <select v-model="layout" id="layout" class="input-field">
-                        <option value="center">Centered</option>
-                        <option value="left">Left Aligned</option>
-                        <option value="gradient">Gradient Background</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="logo">Logo (optional)</label>
-                    <input type="file" id="logo" accept="image/*" @change="handleLogoUpload" class="file-upload" />
-                </div>
-                <button @click="generateImage" class="btn-primary">
+                <button @click="generateImage" class="custom-generate-button" type="submit">
                     Generate OG Image
                 </button>
-            </div>
-            <div>
-                <h2>Preview</h2>
-                <div ref="canvasContainer" class="preview-container">
-                    <canvas ref="canvas" width="1200" height="630"></canvas>
-                </div>
-                <button v-if="imageGenerated" @click="downloadImage" class="btn-download">
-                    Download Image
-                </button>
-            </div>
+            </form>
         </div>
+        <div ref="canvasContainer" class="custom-preview">
+            <h2 class="custom-preview-title">Preview</h2>
+            <canvas ref="canvas" width="1200" height="630" class="custom-preview-image"></canvas>
+        </div>
+        <button v-if="imageGenerated" @click="downloadImage" class="custom-download-button">
+            Download Image
+        </button>
     </div>
+</div>
+</div>
 </template>
 
 <style scoped>
