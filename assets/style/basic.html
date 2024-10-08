@@ -1,36 +1,6 @@
-// utils/thumbnailGenerator.ts
-import { sanitizeHtml } from './sanitizer';
-import marked from 'marked';
-
-interface GetThumbnailTemplateArgs {
-    thumbnail_bg: string;
-    images: string[];
-    fontSize: number;
-    title: string;
-}
-
-const getImage = (image: string) => {
-    return `<img
-      class="logo"
-      alt="Generated Image"
-      src="${sanitizeHtml(image)}"
-      width="auto"
-      height="225"
-    />`;
-};
-
-function getPlusSign(i: number) {
-    return i === 0 ? '' : '<div class="plus">+</div>';
-}
-
-export default function getThumbnailTemplate({
-    title,
-    thumbnail_bg,
-    images,
-    fontSize
-}: GetThumbnailTemplateArgs) {
-    return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,50 +8,70 @@ export default function getThumbnailTemplate({
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body {
-            background: ${thumbnail_bg};
-            background-image: radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%),
-            radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%);
-            background-size: 100px 100px;
+            
+            background-color: #e5e5f7;
+            opacity: 0.8;
+            background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px),
+            radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0,
+            10px 10px;
             height: 100vh;
             display: flex;
             text-align: center;
             align-items: center;
             justify-content: center;
         }
+
         svg {
             height: 40px;
             margin-top: 80px;
         }
+
         h1 {
             font-size: 62px;
             line-height: 80px;
             max-width: 80%;
+
         }
+
         .plus {
             color: #BBB;
             font-family: Times New Roman, Verdana;
             font-size: 100px;
         }
+
         .logo-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
         }
+
         .logo {
             margin: 0 75px;
         }
+
         .spacer {
             margin: 150px;
         }
+
         .heading {
             font-style: normal;
             font-family: 'Inter', sans-serif;
-            font-size: ${fontSize}px;
+            font-size:48px;
             color: #fff;
+  display: inline-block;
+  font-size: 48px;
+  line-height: 1;
+  font-weight: black;
+  background: linear-gradient(to top left, #00d2ff,#3a7bd5)
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
             line-height: 1.8;
         }
     </style>
 </head>
+
 <body>
     <div>
         <div class="spacer"></div>
@@ -90,9 +80,9 @@ export default function getThumbnailTemplate({
         </div>
         <div class="spacer"></div>
         <div class="heading">
-            ${marked(title)}
+            Basis Thumbnail 
         </div>
     </div>
 </body>
-</html>`;
-}
+
+</html>

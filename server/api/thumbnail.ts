@@ -1,46 +1,42 @@
-import { defineEventHandler, getQuery } from 'h3'; // Use `getQuery` instead of `useQuery`
-import { getScreenshot } from '../../utils/chromium'; // Import the getScreenshot function
-import getThumbnailTemplate from '../../utils/thumbnailGenerator'; // Your HTML template generator
+import { defineEventHandler, getQuery, createError, sendError } from 'h3'
+import { getScreenshot } from '~/server/utils/chromium'
+import getThumbnailTemplate from '~/server/utils/thumbnailGenerator'
 
 export default defineEventHandler(async (event) => {
-    const { title, bg, images, fontSize } = getQuery(event); // Use `getQuery` to extract query params
-
-    const thumbnail_bg = bg || '#000000';
-    const size = Number(fontSize) || 100;
-    const imageUrls = Array.isArray(images) ? images : [images];
-
-    // Validate required fields
-    if (!title) {
-        return {
-            statusCode: 400,
-            body: { error: 'Missing title' }
-        };
-    }
-
-    const html = getThumbnailTemplate({
-        title,
-        thumbnail_bg,
-        images: imageUrls,
-        fontSize: size
-    });
-
     try {
-        const isDev = process.env.NODE_ENV !== 'production'; // Check if in development mode
-        const screenshot = await getScreenshot(html, isDev); // Generate screenshot
+        const query = getQuery(event)
+        const title = query.title as string
+        const bg = (query.bg as string) || '#000000'
+        const images = query.images ? (Array.isArray(query.images) ? query.images : [query.images]) : []
+        const fontSize = Number(query.fontSize) || 100
 
-        return {
-            statusCode: 200,
-            body: screenshot,
-            headers: {
-                'Content-Type': 'image/png',
-                'Cache-Control': 'public, immutable, no-transform, s-maxage=31536000, max-age=31536000'
-            }
-        };
+        // Validate required fields
+        if (!title) {
+            throw createError({
+                statusCode: 400,
+                message: 'Missing title'
+            })
+        }
+
+        const html = getThumbnailTemplate({
+            title,
+            thumbnail_bg: bg,
+            images: images as string[],
+            fontSize
+        })
+
+        const isDev = process.env.NODE_ENV !== 'production'
+        const screenshot = await getScreenshot(html, isDev)
+
+        event.node.res.setHeader('Content-Type', 'image/png')
+        event.node.res.setHeader('Cache-Control', 'public, immutable, no-transform, s-maxage=31536000, max-age=31536000')
+
+        return screenshot
     } catch (error) {
-        console.error(error);
-        return {
-            statusCode: 500,
-            body: { error: 'Internal Server Error' }
-        };
+        console.error('Error generating thumbnail:', error)
+        return sendError(event, createError({
+            statusCode: error.statusCode || 500,
+            message: error.message || 'Internal Server Error'
+        }))
     }
-});
+})
