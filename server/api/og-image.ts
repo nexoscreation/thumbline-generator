@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
     ctx.fillRect(0, 0, width, height)
 
     // Draw title
-    ctx.font = 'bold 60px Roboto'
+    
     ctx.fillStyle = textColor
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
