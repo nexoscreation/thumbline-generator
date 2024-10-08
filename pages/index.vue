@@ -4,9 +4,12 @@
         <p class="subtitle">
             Create stunning thumbnails (og-images) on the go with our easy-to-use serverless solution.
         </p>
-        <a class="ctaButton" href="https://github.com/nexoscreation/thumbline-generator">
+        <NuxtLink class="ctaButton" to="https://github.com/nexoscreation/thumbline-generator">
             Check GitHub Docs
-        </a>
+        </NuxtLink>
+        <NuxtLink class="ctaButton" to="/editor-v2">
+            Editor V2
+        </NuxtLink>
     </section>
 
     <section class="demoSection">
@@ -16,7 +19,7 @@
             Generate your own thumbnails by passing parameters to the API. For example:
         </p>
         <code class="code">
-            https://thumbline-generator.vercel.app/api/thumbnail.png?title=Your%20Title&bg=hexcolor
+            http://localhost:3000/api/og-image?title=My%20Awesome%20Blog%20Post&bgColor=%231e293b&textColor=%23ffffff&logoUrl=https://example.com/logo.png
         </code>
     </section>
 </template>
