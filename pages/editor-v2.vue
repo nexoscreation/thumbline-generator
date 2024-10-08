@@ -219,12 +219,12 @@
         ctx.textBaseline = 'middle'
 
         // Draw title
-        ctx.font = 'bold 60px Arial'
+        ctx.font = 'bold 60px Inter'
         const titleX = layout.value === 'left' ? 50 : canvas.value.width / 2
         ctx.fillText(title.value, titleX, canvas.value.height / 2 - 40)
 
         // Draw subtitle
-        ctx.font = '30px Arial'
+        ctx.font = '30px Roboto'
         const subtitleX = layout.value === 'left' ? 50 : canvas.value.width / 2
         ctx.fillText(subtitle.value, subtitleX, canvas.value.height / 2 + 40)
 
