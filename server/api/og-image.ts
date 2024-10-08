@@ -22,7 +22,9 @@ export default defineEventHandler(async (event) => {
     ctx.fillStyle = bgColor
     ctx.fillRect(0, 0, width, height)
 
+
     // Set text properties
+
     ctx.font = 'bold 60px Arial'
     ctx.fillStyle = textColor
     ctx.textAlign = 'center'
