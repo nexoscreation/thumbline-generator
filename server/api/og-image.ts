@@ -1,4 +1,4 @@
-import { createCanvas, loadImage } from 'canvas'
+import { createCanvas, loadImage, registerFont} from 'canvas'
 import { defineEventHandler, getQuery, sendStream } from 'h3'
 
 // Register a font (make sure to have the font file in your project)
