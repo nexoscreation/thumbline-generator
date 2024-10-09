@@ -29,7 +29,7 @@
 
     <footer>
         <p>
-            Built with ❤️ by Nexos Creation. View the full source on
+            Built with ❤️ by <a href="https://nexoscreation.com/" target="_blank" rel="noopener noreferrer">Nexos Creation</a>. View the full source on
             <a href="https://github.com/nexoscreation/thumbline-generator" target="_blank" rel="noopener noreferrer">GitHub</a>.
         </p>
     </footer>
@@ -54,7 +54,7 @@
     .nav-bar h1 {
         font-size: 1.8rem;
         font-weight: bold;
-        color: var(--accent);
+        color: var(--foreground);
         margin: 0;
     }
 
@@ -83,7 +83,6 @@
         max-width: 1200px;
         text-align: center;
         flex: 1;
-        font-family: var(--font-sans-serif);
     }
 
     footer {
