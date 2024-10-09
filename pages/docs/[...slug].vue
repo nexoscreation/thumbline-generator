@@ -11,11 +11,21 @@
     </div>
 </template>
 <script setup lang="ts">
-definePageMeta({
-  layout: 'default'
-})
+    definePageMeta({
+        layout: 'docs'
+    })
 </script>
 
 <style scoped>
     /* Add styles specific to the Post component if needed */
+
+    table {
+        display: block;
+        background-color: var(--muted);
+        color: var(--muted-foreground);
+        padding: 0;
+        border-radius: var(--radius);
+        margin-top: 0;
+        word-wrap: break-word;
+    }
 </style>

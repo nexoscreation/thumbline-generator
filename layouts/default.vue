@@ -1,7 +1,7 @@
 <template>
     <header>
         <nav class="nav-bar">
-            <NuxtLink to="/editor-v1">
+            <NuxtLink to="/">
                 <h1>Serverless Thumbnail Generator</h1>
             </NuxtLink>
             <div class="links">
