@@ -111,6 +111,19 @@
         margin-right: 10px;
     }
 
+    .imageGroup input {
+        flex-grow: 1;
+        margin-right: 10px;
+    }
+
+    .imageGroup button {
+        background-color: #2563EB;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
     .generateButton {
         display: block;
         width: 100%;

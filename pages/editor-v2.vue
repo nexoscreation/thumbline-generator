@@ -43,8 +43,8 @@
                             <input v-model="textColor" type="color" id="textColor" class="custom-color-button" />
                         </div>
                     </div>
-                    <button @click="generateImage" class="custom-generate-button">
-                        Generate OG Image
+                    <button @click="generateImage" class="custom-generate-button" disabled>
+                       Auto Generate OG Image
                     </button>
                 </form>
             </div>
@@ -61,7 +61,7 @@
 
 <style scoped>
     .custom-container {
-        padding: 20px;
+        padding: 0;
     }
 
     .custom-grid {

@@ -4,6 +4,8 @@ import { defineEventHandler, getQuery, sendStream } from 'h3'
 // Register a font (make sure to have the font file in your project)
 // registerFont('~/assets/fonts/Roboto-Bold.ttf', { family: 'Roboto' });
 
+
+
 export default defineEventHandler(async (event) => {
     // Get query parameters
     const query = getQuery(event)
@@ -11,12 +13,17 @@ export default defineEventHandler(async (event) => {
     const bgColor = (query.bgColor as string) || '#1e293b'
     const textColor = (query.textColor as string) || '#ffffff'
     const logoUrl = query.logoUrl as string
+    const fontData = await useStorage('assets:fonts').getItem('Roboto-Bold.woff2');
 
     // Create canvas
     const width = 1200
     const height = 630
     const canvas = createCanvas(width, height)
     const ctx = canvas.getContext('2d')
+    
+    // Get the font file from the assets storage
+    // Register the font from the storage data
+    registerFont(fontData, { family: 'Roboto' });
 
     // Draw background
     ctx.fillStyle = bgColor
@@ -25,14 +32,15 @@ export default defineEventHandler(async (event) => {
 
     // Set text properties
 
-    ctx.font = 'bold 60px Arial'
+    ctx.font = 'bold 60px Roboto'
     ctx.fillStyle = textColor
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
     
     // Draw title
-    const titleX = textAlign === 'left' ? 50 : width / 2
-    ctx.fillText(title, titleX, height / 2 - 40)
+    const titleX = width / 2
+    const titleY = height / 2
+    ctx.fillText(title, titleX, titleY)
 
     // Wrap text if it's too long
     /*    const words = title.split(' ')
