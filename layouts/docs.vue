@@ -1,7 +1,7 @@
 <template>
 
     <Head>
-        <title>{{ document.title }}</title>
+        <title>{{ page.title }}</title>
     </Head>
 
     <header>
@@ -19,9 +19,9 @@
 
     <main>
         <article>
-            <h1>{{ document.title }}</h1>
-            <img width="600" :src="document.image" :alt="document.title" />
-            <div v-html="document.body">
+            <h1>{{ page.title }}</h1>
+            <img width="600" :src="page.image" :alt="page.title" />
+            <div v-html="page.body">
                 <!-- Render body content from the content file -->
             </div>
         </article>
@@ -104,35 +104,32 @@
     }
 </style>
 
-<script lang="ts">
-    import { defineComponent, ref } from 'vue';
+<script setup lang="ts">
+    // Fetch the content dynamically based on the current route's slug
+    const route = useRoute()
+    const { data: page, error } = await useAsyncData(() => queryContent(route.params.slug).findOne())
 
-    export default defineComponent({
-        async setup() {
-            const { document } = await useContentHead(); // Fetch content and metadata
+    // Pass the document to useContentHead for metadata handling
+    if (page) {
+        useContentHead(page) // This sets up the head metadata automatically
+    }
 
-            // Update the head with metadata
-            useHead({
-                title: document.title,
-                meta: [
-                    { name: 'description', content: document.description },
-                    { property: 'og:site_name', content: 'Og Image Generator - Nexos Creation' },
-                    { property: 'og:title', content: document.title },
-                    { property: 'og:description', content: document.description },
-                    { property: 'og:image', content: document.image },
-                    { property: 'og:image:type', content: 'image/png' },
-                    { property: 'og:image:width', content: '1200' },
-                    { property: 'og:image:height', content: '630' },
-                    { name: 'twitter:card', content: 'summary_large_image' },
-                    { name: 'twitter:title', content: document.title },
-                    { name: 'twitter:description', content: document.description },
-                    { name: 'twitter:image', content: document.image },
+    // Update the head with metadata
+    useHead({
+        title: page.title,
+        meta: [
+            { name: 'description', content: page.description },
+            { property: 'og:site_name', content: 'Og Image Generator - Nexos Creation' },
+            { page: 'og:title', content: page.title },
+            { property: 'og:description', content: page.description },
+            { property: 'og:image', content: page.image },
+            { property: 'og:image:type', content: 'image/png' },
+            { property: 'og:image:width', content: '1200' },
+            { property: 'og:image:height', content: '630' },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: page.title },
+            { name: 'twitter:description', content: page.description },
+            { name: 'twitter:image', content: page.image },
             ],
-            });
-
-            return {
-                document
-            };
-        }
     });
 </script>
