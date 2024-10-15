@@ -1,155 +1,99 @@
 <template>
-    <div class="container">
-        <h1 class="h1">Thumbnail Editor</h1>
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-4">Thumbnail Generator</h1>
+    <form @submit.prevent="generateImage" class="mb-4">
+      <div class="mb-4">
+        <label for="title" class="block mb-2">Title</label>
+        <input
+          v-model="title"
+          id="title"
+          type="text"
+          class="w-full p-2 border rounded"
+          required
+        >
+      </div>
+      <div class="mb-4">
+        <label for="subtitle" class="block mb-2">Subtitle</label>
+        <input
+          v-model="subtitle"
+          id="subtitle"
+          type="text"
+          class="w-full p-2 border rounded"
+          required
+        >
+      </div>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
+        Generate Thumbnail
+      </button>
+    </form>
 
-        <div class="formGroup">
-            <label class="label" for="title">Title:</label>
-            <input class="intext" type="text" id="title" v-model="title" placeholder="Enter thumbnail title" />
-        </div>
-
-        <div class="formGroup">
-            <label class="label" for="bgColor">Background Color:</label>
-            <input class="incolor" type="color" id="bgColor" v-model="bgColor" />
-        </div>
-
-        <div class="formGroup">
-            <label class="label">Images (URLs):</label>
-            <div v-for="(url, index) in imageUrls" :key="index" class="imageGroup">
-                <input class="intext" type="text" v-model="imageUrls[index]" placeholder="Enter image URL" />
-                <button @click="handleAddImageUrl">Add</button>
-            </div>
-        </div>
-
-        <button class="generateButton" @click="handleGenerateThumbnail">
-            Generate Thumbnail
-        </button>
-
-        <div v-if="thumbnailUrl" class="preview">
-            <h2>Thumbnail Preview:</h2>
-            <img :src="thumbnailUrl" alt="Thumbnail Preview" class="thumbnailImage" />
-            <p>
-                Generated URL:
-                <a :href="thumbnailUrl" target="_blank" rel="noopener noreferrer">{{ thumbnailUrl }}</a>
-            </p>
-        </div>
+    <div v-if="previewUrl" class="mb-4">
+      <h2 class="text-2xl font-bold mb-2">Preview</h2>
+      <img :src="previewUrl" alt="Preview" class="max-w-full h-auto">
     </div>
+
+    <div v-if="imageUrl">
+      <h2 class="text-2xl font-bold mb-2">Generated Thumbnail</h2>
+      <img :src="imageUrl" alt="Generated Thumbnail" class="max-w-full h-auto">
+    </div>
+  </div>
 </template>
 
-<script lang="ts">
-    import { defineComponent, ref } from 'vue';
+<script setup lang="ts">
+import { ref, watch } from 'vue'
 
-    export default defineComponent({
-        setup() {
-            const title = ref('');
-            const bgColor = ref('#000000');
-            const imageUrls = ref < string[] > (['']);
-            const thumbnailUrl = ref('');
+const title = ref('')
+const subtitle = ref('')
+const imageUrl = ref('')
+const previewUrl = ref('')
 
-            const handleAddImageUrl = () => {
-                imageUrls.value.push('');
-            };
+const generatePreview = () => {
+  const canvas = document.createElement('canvas')
+  canvas.width = 1200
+  canvas.height = 630
+  const ctx = canvas.getContext('2d')
 
-            const handleGenerateThumbnail = () => {
-                const images = imageUrls.value.filter(url => url.trim()).join(',');
-                const generatedUrl = `/api/og-image?title=${encodeURIComponent(title.value)}&bgColor=${bgColor.value}&logoUrl=${encodeURIComponent(images)}`;
-                thumbnailUrl.value = generatedUrl;
-            };
+  if (ctx) {
+    // Background
+    ctx.fillStyle = '#f3f4f6'
+    ctx.fillRect(0, 0, 1200, 630)
 
-            return {
-                title,
-                bgColor,
-                imageUrls,
-                thumbnailUrl,
-                handleAddImageUrl,
-                handleGenerateThumbnail,
-            };
-        }
-    });
+    // Title
+    ctx.font = '60px Roboto'
+    ctx.fillStyle = '#1f2937'
+    ctx.textAlign = 'center'
+    ctx.fillText(title.value, 600, 300)
+
+    // Subtitle
+    ctx.font = '40px Roboto'
+    ctx.fillStyle = '#4b5563'
+    ctx.fillText(subtitle.value, 600, 380)
+
+    previewUrl.value = canvas.toDataURL('image/png')
+  }
+}
+
+watch([title, subtitle], generatePreview)
+
+const generateImage = async () => {
+  try {
+    const response = await fetch('/api/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title: title.value, subtitle: subtitle.value }),
+    })
+
+    if (!response.ok) {
+      throw new Error('Failed to generate image')
+    }
+
+    const blob = await response.blob()
+    imageUrl.value = URL.createObjectURL(blob)
+  } catch (error) {
+    console.error('Error generating image:', error)
+    alert('Failed to generate image. Please try again.')
+  }
+}
 </script>
-
-<style scoped>
-    /* styles/editor.module.css */
-    .container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-        background: #f9f9f9;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .h1 {
-        text-align: center;
-        color: #333;
-    }
-
-    .formGroup {
-        margin-bottom: 15px;
-    }
-
-    .label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
-
-    .intext,
-    .incolor {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
-
-    .imageGroup {
-        display: flex;
-        align-items: center;
-    }
-
-    .imageGroup input {
-        flex-grow: 1;
-        margin-right: 10px;
-    }
-
-    .imageGroup input {
-        flex-grow: 1;
-        margin-right: 10px;
-    }
-
-    .imageGroup button {
-        background-color: #2563EB;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .generateButton {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        background-color: #0070f3;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 10px;
-    }
-
-    .generateButton:hover {
-        background-color: #005bb5;
-    }
-
-    .preview {
-        margin-top: 20px;
-        text-align: center;
-    }
-
-    .thumbnailImage {
-        max-width: 100%;
-        height: auto;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
-</style>
