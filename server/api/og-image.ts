@@ -22,11 +22,13 @@ export default defineEventHandler(async (event) => {
         const textColor = (query.textColor as string) || '#ffffff'
         const logoUrl = query.logoUrl as string
 
+
         // Create canvas
         const width = 1200
         const height = 630
         const canvas = createCanvas(width, height)
         const ctx = canvas.getContext('2d')
+
 
         // Draw background
         ctx.fillStyle = bgColor
@@ -77,6 +79,7 @@ export default defineEventHandler(async (event) => {
                 console.error('Error loading logo:', error)
             }
         }
+
 
         // Set content type and send the image
         event.node.res.setHeader('Content-Type', 'image/png')
